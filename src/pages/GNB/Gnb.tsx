@@ -3,18 +3,12 @@ import logo from '../../assets/Logo.png';
 import { useNavigate } from 'react-router-dom';
 
 import MenuIcon from '@mui/icons-material/Menu';
-import { useEffect } from 'react';
 import { useMenuStore } from '../../store/Menu/menu';
 
 export const Gnb = () => {
   const { isMenuOpen, setIsMenuOpen } = useMenuStore();
 
   const navigate = useNavigate();
-
-  useEffect(() => {
-    // 이 로그는 isMenuOpen 값이 실제로 변경된 후, 리렌더링이 완료되었을 때 실행됩니다.
-    console.log('isMenuOpen 상태가 변경되었습니다:', isMenuOpen);
-  }, [isMenuOpen]);
 
   return (
     <Stack
@@ -40,7 +34,6 @@ export const Gnb = () => {
       <IconButton
         sx={{
           height: '100%',
-          // width: '100%',
           color: '#FFFFFF',
         }}
         disableRipple
@@ -48,7 +41,6 @@ export const Gnb = () => {
           setIsMenuOpen(!isMenuOpen);
           console.log(isMenuOpen);
         }}
-        // onTouchEnd={() => setIsMenuOpen(!isMenuOpen)}
       >
         <MenuIcon
           sx={{
@@ -58,15 +50,6 @@ export const Gnb = () => {
           }}
         />
       </IconButton>
-      {/* <Drawer
-        anchor="right"
-        open={isMenuOpen}
-        onClose={toggleDrawer(false)}
-        sx={{
-          width: '30%',
-          backgroundColor: '#272422',
-        }}
-      ></Drawer> */}
     </Stack>
   );
 };

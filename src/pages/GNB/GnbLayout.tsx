@@ -11,15 +11,9 @@ import {
 import { Gnb } from './Gnb';
 import { Outlet } from 'react-router-dom';
 import { useMenuStore } from '../../store/Menu/menu';
-import { useEffect } from 'react';
 
 export const GnbLayout = () => {
   const { isMenuOpen, setIsMenuOpen } = useMenuStore();
-
-  useEffect(() => {
-    // 이 로그는 isMenuOpen 값이 실제로 변경된 후, 리렌더링이 완료되었을 때 실행됩니다.
-    // console.log('isMenuOpen 상태가 변경되었습니다:', isMenuOpen);
-  }, [isMenuOpen]);
 
   return (
     <Stack
