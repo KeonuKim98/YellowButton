@@ -1,8 +1,26 @@
-import { Box, Stack } from '@mui/material';
-import logo from '../../assets/Logo.png';
-import { Banner } from './Gnb';
+import {
+  Box,
+  Divider,
+  Drawer,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemText,
+  Stack,
+} from '@mui/material';
+import { Gnb } from './Gnb';
+import { Outlet } from 'react-router-dom';
+import { useMenuStore } from '../../store/Menu/menu';
+import { useEffect } from 'react';
 
 export const GnbLayout = () => {
+  const { isMenuOpen, setIsMenuOpen } = useMenuStore();
+
+  useEffect(() => {
+    // 이 로그는 isMenuOpen 값이 실제로 변경된 후, 리렌더링이 완료되었을 때 실행됩니다.
+    // console.log('isMenuOpen 상태가 변경되었습니다:', isMenuOpen);
+  }, [isMenuOpen]);
+
   return (
     <Stack
       sx={{
@@ -11,7 +29,49 @@ export const GnbLayout = () => {
         backgroundColor: '#900020',
       }}
     >
-      <Banner />
+      <Gnb />
+      <Outlet />
+      <Drawer
+        anchor="right"
+        open={isMenuOpen}
+        onClose={() => setIsMenuOpen(false)}
+        PaperProps={{
+          sx: {
+            width: 250, // sx 대신 PaperProps 사용
+            backgroundColor: '#272422',
+          },
+        }}
+      >
+        <Box
+          sx={{
+            height: '100%',
+            color: '#FFFFFF',
+            padding: 2,
+          }}
+          role="presentation"
+          onClick={() => setIsMenuOpen(false)}
+        >
+          <List>
+            {['메뉴 1', '메뉴 2', '메뉴 3', '설정'].map((text) => (
+              <ListItem key={text} disablePadding>
+                <ListItemButton>
+                  <ListItemText primary={text} sx={{ color: '#FFFFFF' }} />
+                </ListItemButton>
+              </ListItem>
+            ))}
+          </List>
+          <Divider sx={{ backgroundColor: '#FFFFFF' }} />
+          <List>
+            {['로그아웃'].map((text) => (
+              <ListItem key={text} disablePadding>
+                <ListItemButton>
+                  <ListItemText primary={text} sx={{ color: '#FFFFFF' }} />
+                </ListItemButton>
+              </ListItem>
+            ))}
+          </List>
+        </Box>
+      </Drawer>
     </Stack>
   );
 };
