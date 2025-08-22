@@ -1,12 +1,12 @@
 import { Stack } from '@mui/material';
 
-export const Home = () => {
+export const ReservationHome = () => {
   return (
     <Stack
       sx={{
         height: '100%',
         width: '100%',
-        backgroundColor: '#900020',
+        backgroundColor: '#000290ff',
       }}
     ></Stack>
   );
