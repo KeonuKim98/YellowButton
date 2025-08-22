@@ -1,16 +1,8 @@
-import {
-  Box,
-  Divider,
-  Drawer,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemText,
-  Stack,
-} from '@mui/material';
+import { Drawer, Stack } from '@mui/material';
 import { Gnb } from './Gnb';
 import { Outlet } from 'react-router-dom';
 import { useMenuStore } from '../../store/Menu/menu';
+import { Snb } from './SNB';
 
 export const GnbLayout = () => {
   const { isMenuOpen, setIsMenuOpen } = useMenuStore();
@@ -20,7 +12,7 @@ export const GnbLayout = () => {
       sx={{
         height: '100%',
         width: '100%',
-        backgroundColor: '#900020',
+        backgroundColor: '#FFFFFF',
       }}
     >
       <Gnb />
@@ -36,35 +28,7 @@ export const GnbLayout = () => {
           },
         }}
       >
-        <Box
-          sx={{
-            height: '100%',
-            color: '#FFFFFF',
-            padding: 2,
-          }}
-          role="presentation"
-          onClick={() => setIsMenuOpen(false)}
-        >
-          <List>
-            {['메뉴 1', '메뉴 2', '메뉴 3', '설정'].map((text) => (
-              <ListItem key={text} disablePadding>
-                <ListItemButton>
-                  <ListItemText primary={text} sx={{ color: '#FFFFFF' }} />
-                </ListItemButton>
-              </ListItem>
-            ))}
-          </List>
-          <Divider sx={{ backgroundColor: '#FFFFFF' }} />
-          <List>
-            {['로그아웃'].map((text) => (
-              <ListItem key={text} disablePadding>
-                <ListItemButton>
-                  <ListItemText primary={text} sx={{ color: '#FFFFFF' }} />
-                </ListItemButton>
-              </ListItem>
-            ))}
-          </List>
-        </Box>
+        <Snb />
       </Drawer>
     </Stack>
   );
