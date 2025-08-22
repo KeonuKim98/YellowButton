@@ -34,6 +34,15 @@ export const Snb = () => {
             <ListItemText primary={'예약하기'} sx={{ color: '#FFFFFF' }} />
           </ListItemButton>
         </ListItem>
+        <ListItem disablePadding>
+          <ListItemButton
+            onClick={() => {
+              navigate('./games');
+            }}
+          >
+            <ListItemText primary={'게임소개'} sx={{ color: '#FFFFFF' }} />
+          </ListItemButton>
+        </ListItem>
       </List>
       <Divider sx={{ backgroundColor: '#FFFFFF' }} />
       <List>
