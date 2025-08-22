@@ -1,4 +1,4 @@
-import { Stack, TextField, Typography } from '@mui/material';
+import { Stack, Typography } from '@mui/material';
 
 export const GameList = () => {
   return (

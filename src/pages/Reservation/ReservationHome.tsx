@@ -1,6 +1,6 @@
 import { Stack, TextField, Typography } from '@mui/material';
 import { TextFieldSx, TextInputProps, TitleSx } from './ReservationFormStyles';
-import { DatePicker, DateTimePicker } from '@mui/x-date-pickers';
+import { DateTimePicker } from '@mui/x-date-pickers';
 
 export const ReservationHome = () => {
   return (
